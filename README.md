@@ -10,6 +10,7 @@ https://www.saucedemo.com/
 - Login - Valid login, Invalid login credentials, Locked out user
 - Add to cart - Adding a product to the cart
 - Checkout - Complete purchase flow with order comfirmation
+- Assertions - Testing assertions on toHaveCount, toHaveValue and toBeEnabled
 
 ## Tech stack
 - Playwright
