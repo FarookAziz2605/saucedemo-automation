@@ -25,3 +25,21 @@ test('After logging in, check the sort dropdown currently shows "lohi" (low to h
 test('Check the login button is enabled on the login page:', async({page}) =>{
     await expect(page.locator('#login-button')).toBeEnabled();
 })
+
+//Testing out, whether the cart is not visible before login
+test('Checking on the login page to assert the cart icon is NOT visible', async({page}) => {
+    await expect(page.locator('.shopping_cart_link')).not.toBeVisible();
+
+});
+
+//Testing out, whether the product is not visible before login
+test('Checking on the login page to assert products is NOT visible', async({page}) => {
+    
+    await expect(page.locator('.inventory_item_description')).not.toBeVisible();
+});
+
+//Testing out, to check if placeholder is correct
+test('Assert the username field has placeholder “Username”', async({page}) => {
+
+    await expect(page.locator('#user-name')).toHaveAttribute('placeholder', 'Username');
+});
