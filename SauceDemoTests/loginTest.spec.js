@@ -10,14 +10,17 @@ test.beforeEach(async({page}) => {
 test ('Valid login', async({page}) => {
     //Valid login
     await loginPage.login('standard_user', 'secret_sauce');
-    await expect(page).toHaveTitle(/Swag Labs/);
+    await expect(page).toHaveURL(/inventory.html/);
+    await expect(page.locator('.title')).toHaveText('Products');
     
 });
 
 test ('Invalid login', async({page}) => {
     //Invalid Login
     await loginPage.login('Invalid_Username', 'secret_sauce');
-    await expect(page.locator('[data-test="error"]')).toHaveText("Epic sadface: Username and password do not match any user in this service");
+    await expect(page.locator('[data-test="error"]')).toBeEnabled();
+    //Tocheck if statement also correct
+     await expect(page.locator('[data-test="error"]')).toHaveText("Epic sadface: Username and password do not match any user in this service");
     //datatest
 });
 test ('locked out user', async ({page}) => {
