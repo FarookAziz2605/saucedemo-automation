@@ -19,7 +19,7 @@ test.beforeEach(async({page}) => {
     productName= await page.locator(".inventory_item_name").first().textContent();
 })
 
-test.describe('Cart Functionalities', () => {
+test.describe('Navigating and Adding product to cart', () => {
     test('End to end flow to cart', async ({page}) => {
 
         await cartPage.goToCart();
@@ -33,7 +33,18 @@ test.describe('Cart Functionalities', () => {
         await expect(page.locator('.inventory_item_name')).toHaveCount(2);
         
     }); 
+    
+    test('To check if remove button works', async({page}) => {
+    await page.locator('#add-to-cart-sauce-labs-bike-light').click(); 
+    await cartPage.goToCart();
 
+    await page.locator('#remove-sauce-labs-bike-light').click();
+    await expect(page.locator('.inventory_item_name')).toHaveCount(1);
+});
+});
+
+test.describe('Varifying Products contents in the Cart', () => {
+    
     test('Testing the product content in cart', async({page}) => {
 
         await cartPage.goToCart();
@@ -50,12 +61,5 @@ test.describe('Cart Functionalities', () => {
         await expect(page.locator(".inventory_item_name")).toHaveText(productName);
     });
 
-    test('To check if remove button works', async({page}) => {
-        await page.locator('#add-to-cart-sauce-labs-bike-light').click(); 
-        await cartPage.goToCart();
-
-        await page.locator('#remove-sauce-labs-bike-light').click();
-        await expect(page.locator('.inventory_item_name')).toHaveCount(1);
-    });
-});
+})
 
