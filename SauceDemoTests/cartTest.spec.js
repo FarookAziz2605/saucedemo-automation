@@ -41,6 +41,7 @@ test.describe('Navigating and Adding product to cart', () => {
     await page.locator('#remove-sauce-labs-bike-light').click();
     await expect(page.locator('.inventory_item_name')).toHaveCount(1);
 });
+
 });
 
 test.describe('Varifying Products contents in the Cart', () => {

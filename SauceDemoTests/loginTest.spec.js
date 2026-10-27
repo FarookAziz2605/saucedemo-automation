@@ -19,7 +19,7 @@ test ('Invalid login', async({page}) => {
     //Invalid Login
     await loginPage.login('Invalid_Username', 'secret_sauce');
     await expect(page.locator('[data-test="error"]')).toBeEnabled();
-    //Tocheck if statement also correct
+    //To check if statement also correct
      await expect(page.locator('[data-test="error"]')).toHaveText("Epic sadface: Username and password do not match any user in this service");
     //datatest
 });
