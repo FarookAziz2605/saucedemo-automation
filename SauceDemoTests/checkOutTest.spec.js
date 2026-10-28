@@ -16,6 +16,4 @@ test('end to end flow to checkout', async({loggedInPage}) => {
     await expect(loggedInPage.page.locator('.complete-header')).toHaveText('Thank you for your order!');
     await checkOutPage.backToHome();
 
-
-
 })
