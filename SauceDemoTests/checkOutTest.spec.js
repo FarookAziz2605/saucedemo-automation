@@ -1,23 +1,19 @@
-import {test, expect} from '@playwright/test';
-import { LoginPage } from '../SauceDemoPages/LoginPage';
+import {test, expect} from '../fixtures.js'
 import { CartPage } from '../SauceDemoPages/CartPage';
 import {CheckOutPage} from '../SauceDemoPages/CheckOutPage'
 
-test('end to end flow to checkout', async({page}) => {
-    const loginPage = new LoginPage(page);
-    await loginPage.goto();
-    await loginPage.login('standard_user', 'secret_sauce');
+test('end to end flow to checkout', async({loggedInPage}) => {
 
-    const cartPage = new CartPage(page);
+    const cartPage = new CartPage(loggedInPage.page);
     await cartPage.addBackPackToCart();
     await cartPage.goToCart();
 
-    const checkOutPage = new CheckOutPage(page);
+    const checkOutPage = new CheckOutPage(loggedInPage.page);
     await checkOutPage.goToCheckout();
     await checkOutPage.fillTheDetails("Arnold", "Arnold Schwarzenegger", "122312");
     await checkOutPage.finishPurchase();
     
-    await expect(page.locator('.complete-header')).toHaveText('Thank you for your order!');
+    await expect(loggedInPage.page.locator('.complete-header')).toHaveText('Thank you for your order!');
     await checkOutPage.backToHome();
 
 
