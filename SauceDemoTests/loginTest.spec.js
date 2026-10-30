@@ -28,3 +28,13 @@ for (const testData of loginTestData) {
     })
     
 };
+
+test('Logout testing', async({page}) => {
+    const loginPage = new LoginPage(page);
+    await loginPage.goto();
+    await loginPage.login('standard_user', 'secret_sauce');
+    await loginPage.logout();
+
+    await expect(page).toHaveURL('https://www.saucedemo.com/');
+    await expect(page.locator('#login-button')).toHaveValue('Login');
+}) 
