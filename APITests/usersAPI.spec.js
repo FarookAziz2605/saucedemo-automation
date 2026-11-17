@@ -16,8 +16,7 @@ test('Post user 26', async ({ request }) => {
     const response = await request.post('https://jsonplaceholder.typicode.com/posts', {
         data: { title: 'my New Post', body: 'Hello', userId: 26 }
     });
-    console.log(response.status());
-    console.log(await response.json());
+
 });
 
 test('GET user 9999', async ({request}) => {
@@ -25,7 +24,7 @@ test('GET user 9999', async ({request}) => {
     expect(response.status()).toBe(404);
 
     const body = await response.json();
-    console.log(body);
+
 })
 
 test('Post create a post', async ({request}) => {
