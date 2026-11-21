@@ -1,4 +1,28 @@
 {
-    "newPost": {"title" : "New Post", "body": "Hello You", "userId": 27}, 
-    "updatedPost": {"UserId": 19, "id": 1, "title": "Updated Title", "body": "New Hello You"}
+    "newPost": {
+        "title" : "New Post", 
+        "body": "Hello You", 
+        "userId": 27
+    }, 
+
+    "updatedPost": {
+        "userId": 19, 
+        "id": 1, 
+        "title": "Updated Title", 
+        "body": "New Hello You"
+    },
+
+    "newBooking": {
+        "firstname": "Farook",
+        "lastname": "Aziz",
+        "totalprice": 200,
+        "depositpaid": true,
+        "bookingdates": {
+            "checkin": "2026-12-01",
+            "checkout": "2026-12-06"
+        },
+        "additionalneeds": "Lunch"
+    }
+
+    
 }
